@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司简介 - 山东众志诚医养中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --secondary: #4CAF50;
+            --accent: #FF9800;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* 导航栏样式 - 与首页完全一致 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 5%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons .btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 15px;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-login {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 公司简介内容样式 */
+        .about-company {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .company-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .company-text {
+            flex: 1;
+        }
+
+        .company-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .company-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .company-highlights {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-card h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .company-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .company-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 页脚样式 - 与首页一致 */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 5% 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(8px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.3rem;
+            min-width: 25px;
+            padding-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 1rem;
+            max-width: 1400px;
+            margin: 60px auto 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .company-content {
+                flex-direction: column;
+            }
+
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            .nav-links {
+                margin: 25px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 - 与首页完全一致 -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="./图片材料/无背景纯净logo.png" height="35">
+                </div>
+                <div class="logo-text">众志诚<span>医养中心</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a
+                        href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc0%E9%A6%96%E9%A1%B5%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                            class="fas fa-home"></i> 首页</a></li>
+                <li><a href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc1%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B%E6%9C%80%E7%BB%88%E7%89%88.html"
+                        class="active"><i class="fas fa-building"></i>公司简介</a></li>
+                <li><a
+                        href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc4%E5%8C%BB%E7%96%97%E8%B5%84%E6%BA%90%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                            class="fas fa-stethoscope"></i> 医疗资源</a></li>
+                <li><a
+                        href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc5%E4%BD%8F%E5%AE%BF%E7%8E%AF%E5%A2%83%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                            class="fas fa-bed"></i> 住宿环境</a></li>
+                <li><a
+                        href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc6%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                            class="fas fa-info-circle"></i> 关于我们</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc2%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E6%9C%80%E7%BB%88%E7%89%88.html"
+                    class="btn btn-login"><i class="fas fa-sign-in-alt"></i> 登录</a>
+                <a href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc3%E6%B3%A8%E5%86%8C%E7%95%8C%E9%9D%A2%E6%9C%80%E7%BB%88%E7%89%88.html"
+                    class="btn btn-register"><i class="fas fa-user-plus"></i> 注册</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 公司简介内容 -->
+    <section class="about-company">
+        <div class="page-header">
+            <h1 class="page-title">公司简介</h1>
+        </div>
+
+        <div class="company-content">
+            <div class="company-text">
+                <h3>专业医疗与温馨养老的完美结合</h3>
+                <p>山东众志诚医养中心成立于2023年，坐落于山东省济南市槐荫区，是一家集医疗、康复、养老、护理于一体的现代化医养结合机构。我们秉承"专业医疗、温馨照护、品质生活"的理念，致力于为长者提供全方位的健康养老服务。
+                </p>
+                <p>中心占地面积3500+平方米，设有120+张床位，配备先进的医疗设备和舒适的养老环境。我们的团队由资深医师、专业护士、康复师和护理人员组成，为每位入住长者提供个性化、专业化的医养服务。</p>
+
+                <div class="company-highlights">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>公司资质</h4>
+                        <p>医疗机构执业许可证<br>养老机构设立许可证<br>ISO质量管理体系认证</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>专业团队</h4>
+                        <p>50+专业医护人员<br>24小时全天候服务<br>1:5专业护理比例</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>服务理念</h4>
+                        <p>医养结合<br>个性化服务<br>家属满意度98%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="company-image">
+                <img src="./图片材料/医养中心侧门牌.jpg" alt="众志诚医养中心">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 页脚 - 与首页完全一致 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>众志诚医养中心</h3>
+                <p>专业医疗与温馨养老结合，为长者提供全方位、高品质的医养服务，创造安心、舒适的晚年生活。</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>山东省济南市槐荫区经十路24566号10幢</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>0531-89766166</div>
+                        <div>19861896999</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>contact@zzcyy.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a
+                            href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc0%E9%A6%96%E9%A1%B5%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                                class="fas fa-chevron-right"></i>首页</a></li>
+                    <li><a
+                            href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc1%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                                class="fas fa-chevron-right"></i> 公司简介</a></li>
+                    <li><a
+                            href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc4%E5%8C%BB%E7%96%97%E8%B5%84%E6%BA%90%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                                class="fas fa-chevron-right"></i> 医疗资源</a></li>
+                    <li><a
+                            href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc5%E4%BD%8F%E5%AE%BF%E7%8E%AF%E5%A2%83%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                                class="fas fa-chevron-right"></i> 住宿环境</a></li>
+                    <li><a
+                            href="file:///C:/Users/admin/Desktop/%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83/%E4%BC%97%E5%BF%97%E8%AF%9A%E5%8C%BB%E5%85%BB%E4%B8%AD%E5%BF%83%E6%9C%80%E7%BB%88%E7%89%88/zzc6%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC%E6%9C%80%E7%BB%88%E7%89%88.html"><i
+                                class="fas fa-chevron-right"></i> 关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>服务项目</h3>
+                <ul class="footer-links">
+                    <li><a><i class="fas fa-chevron-right"></i> 医疗护理</a></li>
+                    <li><a><i class="fas fa-chevron-right"></i> 康复治疗</a></li>
+                    <li><a><i class="fas fa-chevron-right"></i> 长期照护</a></li>
+                    <li><a><i class="fas fa-chevron-right"></i> 营养膳食</a></li>
+                    <li><a><i class="fas fa-chevron-right"></i> 文娱活动</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <p>订阅我们的通讯，获取最新资讯和健康知识</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-weibo"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-qq"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 山东众志诚医养中心 版权所有 | 鲁ICP备XXXXXX号
+        </div>
+    </footer>
+</body>
+
+</html>
